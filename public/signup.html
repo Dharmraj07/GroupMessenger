@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign Up</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: azure">
+    <div class="container mt-5">
+      <h1>Sign Up</h1>
+      <div class="col-md-7">
+        <form>
+          <div class="form-group">
+            <label for="username"><b>Username</b></label>
+            <input type="text" class="form-control" id="username" required />
+          </div>
+          <div class="form-group">
+            <label for="email"><b>Email address</b></label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone"><b>Phone</b></label>
+            <input type="tel" class="form-control" id="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="password"><b>Password</b></label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary"><b>Sign Up</b></button>
+        </form>
+        <p>
+          <b>Already have an account?</b> <a href="index.html"><b>Log in</b></a
+          >.
+        </p>
+      </div>
+    </div>
+    <!-- Axios JavaScript library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+      const form = document.querySelector("form");
+      const api = `http://localhost:8000`;
+     //const api="http://13.48.46.151:8000";
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+        try {
+          const res = await axios.post(`${api}/signup`, {
+            username,
+            email,
+            phone,
+            password,
+          });
+          alert(res.data.message);
+          alert(res.data.message);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("username", res.data.username);
+          localStorage.setItem("user_id", res.data.id);
+          window.location.href = "dashboard.html";
+          // do something with the response, e.g. redirect to a different page
+        } catch (error) {
+          console.error(error.response.data);
+          // display error message to the user
+        }
+        form.reset();
+      });
+    </script>
+  </body>
+</html>

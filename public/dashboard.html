@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ChatFusion App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#" id="username"></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="signin.html">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup.html">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#createroom"
+              data-toggle="modal"
+              data-target="#createGroupModal"
+              >Create Group</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <header class="text-center mb-4">
+        <h1><i class="fas fa-smile"></i> ChatFusion</h1>
+      </header>
+
+      <main>
+        <form id="chat-group">
+          <!-- <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              class="form-control"
+              placeholder="Enter username..."
+              required
+            />
+          </div> -->
+          <div class="form-group">
+            <label for="group"><b>Group</b></label>
+            <select name="group" id="group" class="form-control"></select>
+          </div>
+          <button type="submit" class="btn btn-primary">Join Chat</button>
+
+          <br /><br /><br />
+          <header class="text-center mb-4">
+            <h1><i class="fas fa-heart"></i> USER DASHBOARD</h1>
+          </header>
+        </form>
+        <form id="addGroup">
+          <div class="form-group">
+            <label for="group"><b>Group List</b></label>
+            <select
+              name="grouplist"
+              id="grouplist"
+              class="form-control"
+            ></select>
+          </div>
+
+          <div class="form-group">
+            <label for="email"><b>Email</b></label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="form-control"
+              placeholder="Enter email..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="action"><b>Action:</b></label>
+            <select name="action" id="action" class="form-control">
+              <option value="remove">Remove</option>
+              <option value="add">Add</option>
+            </select>
+            <div class="form-group" id="adminGroup" style="display: none">
+              <label for="admin"><b>Admin?</b></label>
+              <select name="admin" id="admin" class="form-control">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" id="addlist" class="btn btn-primary">
+            SUBMIT
+          </button>
+        </form>
+      </main>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div
+      class="modal fade"
+      id="createGroupModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="createGroupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createGroupModalLabel">Create Group</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="groupName">Group Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="groupName"
+                  placeholder="Enter group name"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="createGroupButton"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
